@@ -1,5 +1,6 @@
 type Query {
-  productsById(id: ID): Product
+  getProductById(id: ID): Product
+  findAllProducts: [Product]!
 }
 
 type Product {

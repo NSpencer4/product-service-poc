@@ -2,15 +2,13 @@ package com.productpickerservicepoc.models;
 
 import org.springframework.core.style.ToStringCreator;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
-@Table(name = "product")
+@Table(name = "products")
 public class Product {
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     public Long id;
 
     @Column
@@ -27,6 +25,21 @@ public class Product {
 
     @Column
     public Double price;
+
+    public Product(final Long id, final String name,
+                   final String shortdescription, final String imageurl,
+                   final Integer quantity, final Double price) {
+        this.id = id;
+        this.name = name;
+        this.shortdescription = shortdescription;
+        this.imageurl = imageurl;
+        this.quantity = quantity;
+        this.price = price;
+    }
+
+    public Product() {
+        //
+    }
 
     public Long getId() {return this.id;}
     public void setId(Long id) { this.id = id;}
@@ -45,17 +58,6 @@ public class Product {
 
     public Double getPrice() {return this.price;}
     public void setPrice(Double price) { this.price = price;}
-
-    public Product(final Long id, final String name,
-                   final String shortdescription, final String imageurl,
-                   final Integer quantity, final Double price) {
-        this.id = id;
-        this.name = name;
-        this.shortdescription = shortdescription;
-        this.imageurl = imageurl;
-        this.quantity = quantity;
-        this.price = price;
-    }
 
     @Override
     public String toString() {

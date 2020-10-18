@@ -9,5 +9,4 @@ public class ProductPickerServicePocApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(ProductPickerServicePocApplication.class, args);
 	}
-
 }

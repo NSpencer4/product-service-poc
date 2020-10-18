@@ -19,7 +19,7 @@ public class GraphQLDataFetchers {
                     .put("quantity", "quantity")
                     .put("price", "price")
             .build());
-    public DataFetcher getProductsById() {
+    public DataFetcher getProductById() {
         return dataFetchingEnvironment -> {
             String productId = dataFetchingEnvironment.getArgument("id");
             return products
@@ -28,5 +28,11 @@ public class GraphQLDataFetchers {
                     .findFirst()
                     .orElse(null);
         };
+    }
+    public DataFetcher findAllProducts() {
+        return dataFetchingEnvironment -> products
+                .stream()
+                .findAny()
+                .orElse(null);
     }
 }
