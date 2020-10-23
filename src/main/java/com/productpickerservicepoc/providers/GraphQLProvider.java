@@ -8,7 +8,6 @@ import graphql.schema.idl.RuntimeWiring;
 import graphql.schema.idl.SchemaGenerator;
 import graphql.schema.idl.SchemaParser;
 import graphql.schema.idl.TypeDefinitionRegistry;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Component;
 
@@ -20,9 +19,6 @@ import static graphql.schema.idl.TypeRuntimeWiring.newTypeWiring;
 
 @Component
 public class GraphQLProvider {
-    @Autowired
-    GraphQLDataFetchers graphQLDataFetchers;
-
     // To be used by the GraphQL Java Spring Adapter to make the schema available at /graphql
     private GraphQL graphQL;
 
@@ -58,11 +54,7 @@ public class GraphQLProvider {
      */
     private RuntimeWiring buildWiring() {
         return RuntimeWiring.newRuntimeWiring()
-                .type(newTypeWiring("Query")
-                        .dataFetcher("getProductsById", graphQLDataFetchers.getProductById())
-                        .dataFetcher("findAllProducts", graphQLDataFetchers.findAllProducts())
-                )
-                .build();
+                .type(newTypeWiring("Query")).build();
     }
 
     @Bean

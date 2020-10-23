@@ -8,66 +8,122 @@ import javax.persistence.*;
 @Table(name = "products")
 public class Product {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    public Long id;
+    public Integer product_id;
 
     @Column
     public String name;
 
     @Column
-    public String shortdescription;
+    public String manufacturer_name;
 
     @Column
-    public String imageurl;
+    public String category;
 
     @Column
-    public Integer quantity;
+    public String item_number;
 
     @Column
-    public Double price;
+    public String description;
 
-    public Product(final Long id, final String name,
-                   final String shortdescription, final String imageurl,
-                   final Integer quantity, final Double price) {
-        this.id = id;
+    @Column
+    public String image_url;
+
+    @Column
+    public String created_at;
+
+    public Product(final Integer productId, final String name,
+                   final String manufacturer_name, final String category,
+                   final String item_number, final String description,
+                   final String image_url, final String created_at) {
+        this.product_id = productId;
         this.name = name;
-        this.shortdescription = shortdescription;
-        this.imageurl = imageurl;
-        this.quantity = quantity;
-        this.price = price;
+        this.manufacturer_name = manufacturer_name;
+        this.category = category;
+        this.item_number = item_number;
+        this.description = description;
+        this.image_url = image_url;
+        this.created_at = created_at;
     }
 
     public Product() {
         //
     }
 
-    public Long getId() {return this.id;}
-    public void setId(Long id) { this.id = id;}
+    public Integer getId() {
+        return this.product_id;
+    }
 
-    public String getName() {return this.name;}
-    public void setName(Long id) { this.name = name;}
+    public void setId(Integer productId) {
+        this.product_id = productId;
+    }
 
-    public String getShortDescription() {return this.shortdescription;}
-    public void setShortDescription(String shortDescription) { this.shortdescription = shortDescription;}
+    public String getName() {
+        return this.name;
+    }
 
-    public String getImageUrl() {return this.imageurl;}
-    public void setImageUrl(String imageUrl) { this.imageurl = imageUrl;}
+    public void setName(String name) {
+        this.name = name;
+    }
 
-    public Integer getQuantity() {return this.quantity;}
-    public void setQuantity(Integer quantity) { this.quantity = quantity;}
+    public String getManufacturerName() {
+        return this.manufacturer_name;
+    }
 
-    public Double getPrice() {return this.price;}
-    public void setPrice(Double price) { this.price = price;}
+    public void setManufacturerName(String manufacturerName) {
+        this.manufacturer_name = manufacturerName;
+    }
+
+    public String getCategory() {
+        return this.category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
+    }
+
+    public String getItemNumber() {
+        return this.item_number;
+    }
+
+    public void setItemNumber(String itemNumber) {
+        this.item_number = itemNumber;
+    }
+
+    public String getDescription() {
+        return this.description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public String getImageUrl() {
+        return this.image_url;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.image_url = imageUrl;
+    }
+
+    public String getCreateAt() {
+        return this.created_at;
+    }
+
+    public void setCreatedAt(String createdAt) {
+        this.created_at = createdAt;
+    }
 
     @Override
     public String toString() {
         return new ToStringCreator(this)
                 .append("id", this.getId())
                 .append("name", this.getName())
-                .append("shortdescription", this.getShortDescription())
-                .append("imageurl", this.getImageUrl())
-                .append("quantity", this.getQuantity())
-                .append("price", this.getPrice())
+                .append("manufacturer_name", this.getManufacturerName())
+                .append("category", this.getCategory())
+                .append("item_number", this.getItemNumber())
+                .append("description", this.getDescription())
+                .append("image_url", this.getImageUrl())
+                .append("created_at", this.getCreateAt())
                 .toString();
     }
 }

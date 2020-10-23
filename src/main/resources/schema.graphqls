@@ -4,10 +4,12 @@ type Query {
 }
 
 type Product {
-  id: ID
+  product_id: ID
   name: String
-  shortdescription: String
-  imageurl: String
-  quantity: Int
-  price: Float
+  manufacturer_name: String
+  category: String
+  item_number: String
+  description: String
+  image_url: String
+  created_at: String
 }

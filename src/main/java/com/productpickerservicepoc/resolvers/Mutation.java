@@ -14,10 +14,11 @@ public class Mutation implements GraphQLMutationResolver {
         this.productRepository = productRepository;
     }
 
-    public Product createProduct(Long id, String name,
-                                 String shortdescription, String imageurl,
-                                 Integer quantity, Double price) {
-        Product product = new Product(id, name, shortdescription, imageurl, quantity, price);
+    public Product createProduct(Integer product_id, String name,
+                                 String manufacturerName, String category,
+                                 String itemNumber, String description,
+                                 String image_url, String created_at) {
+        Product product = new Product(product_id, name, manufacturerName, category, itemNumber, description, image_url, created_at);
         productRepository.save(product);
         return product;
     }

@@ -15,8 +15,8 @@ public class Query implements GraphQLQueryResolver {
         this.productRepository = productRepository;
     }
 
-    public Product getProductById(Long id) {
-        return this.productRepository.getOne(id);
+    public Product getProductById(Integer productId) {
+        return this.productRepository.getOne(productId);
     }
 
     public Iterable<Product> findAllProducts() {
