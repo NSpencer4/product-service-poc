@@ -2,28 +2,23 @@ package com.productpickerservicepoc.models;
 
 import org.springframework.core.style.ToStringCreator;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.sql.Timestamp;
+
+import static javax.persistence.GenerationType.IDENTITY;
 
 @Entity
 @Table(name = "users")
 public class User {
     @Id
+    @GeneratedValue(strategy = IDENTITY)
     public Integer user_id;
 
     @Column
     public String username;
 
     @Column
-    public String created_at;
-
-    public User(final Integer userId, final String username, final String createdAt) {
-        this.user_id = userId;
-        this.username = username;
-        this.created_at = createdAt;
-    }
+    public Timestamp created_at;
 
     public User() {
         //
@@ -45,11 +40,11 @@ public class User {
         this.username = username;
     }
 
-    public String getCreatedAt() {
+    public Timestamp getCreatedAt() {
         return this.created_at;
     }
 
-    public void setCreatedAt(String createdAt) {
+    public void setCreatedAt(Timestamp createdAt) {
         this.created_at = createdAt;
     }
 

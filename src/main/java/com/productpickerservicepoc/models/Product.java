@@ -32,17 +32,17 @@ public class Product {
     public String created_at;
 
     public Product(final Integer productId, final String name,
-                   final String manufacturer_name, final String category,
-                   final String item_number, final String description,
-                   final String image_url, final String created_at) {
+                   final String manufacturerName, final String category,
+                   final String itemNumber, final String description,
+                   final String imageUrl, final String createdAt) {
         this.product_id = productId;
         this.name = name;
-        this.manufacturer_name = manufacturer_name;
+        this.manufacturer_name = manufacturerName;
         this.category = category;
-        this.item_number = item_number;
+        this.item_number = itemNumber;
         this.description = description;
-        this.image_url = image_url;
-        this.created_at = created_at;
+        this.image_url = imageUrl;
+        this.created_at = createdAt;
     }
 
     public Product() {

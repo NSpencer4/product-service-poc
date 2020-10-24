@@ -2,7 +2,7 @@ package com.productpickerservicepoc.resolvers;
 
 import com.coxautodev.graphql.tools.GraphQLMutationResolver;
 import com.productpickerservicepoc.models.Product;
-import com.productpickerservicepoc.repositories.ProductRepository;
+import com.productpickerservicepoc.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
