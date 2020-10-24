@@ -8,8 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import static org.springframework.http.HttpStatus.CREATED;
-
 @RestController
 @CrossOrigin
 @RequestMapping("/api/user")
@@ -22,6 +20,29 @@ public class UserController {
     public ResponseEntity<Void> create(@RequestBody UserDto userDto) {
         LOGGER.info(userDto.toString());
         userService.create(userDto);
-        return new ResponseEntity<>(CREATED);
+        return userService.create(userDto);
+    }
+
+    @GetMapping(value = "/getById/{id}")
+    public ResponseEntity<Void> getById(@PathVariable Integer id) {
+        LOGGER.info(id.toString());
+        return userService.getById(id);
+    }
+
+    @GetMapping("/getAll")
+    public ResponseEntity<Void> getAll() {
+        return userService.getAll();
+    }
+
+    @PutMapping("/update")
+    public ResponseEntity<Void> update(@RequestBody UserDto userDto) {
+        LOGGER.info(userDto.toString());
+        return userService.update(userDto);
+    }
+
+    @DeleteMapping(value = "/delete/{id}")
+    public ResponseEntity<Void> delete(@PathVariable Integer id) {
+        LOGGER.info(id.toString());
+        return userService.delete(id);
     }
 }
