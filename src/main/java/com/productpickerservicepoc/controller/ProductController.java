@@ -18,4 +18,9 @@ public class ProductController {
         productServiceImpl.create(productRequestDto);
         return new ResponseEntity<>(CREATED);
     }
+
+    //TODO: get by id
+    //TODO: get all
+    //TODO: Update
+    //TODO: Delete
 }
