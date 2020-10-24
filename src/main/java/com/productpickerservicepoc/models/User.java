@@ -20,40 +20,45 @@ public class User {
     @Column
     private Timestamp created_at;
 
+    public User(Integer user_id, String username, Timestamp created_at) {
+        this.user_id = user_id;
+        this.username = username;
+        this.created_at = created_at;
+    }
+
     public User() {
-        //
     }
 
-    public Integer getUserId() {
-        return this.user_id;
+    public Integer getUser_id() {
+        return user_id;
     }
 
-    public void setUserId(Integer userId) {
-        this.user_id = userId;
+    public void setUser_id(Integer user_id) {
+        this.user_id = user_id;
     }
 
     public String getUsername() {
-        return this.username;
+        return username;
     }
 
     public void setUsername(String username) {
         this.username = username;
     }
 
-    public Timestamp getCreatedAt() {
-        return this.created_at;
+    public Timestamp getCreated_at() {
+        return created_at;
     }
 
-    public void setCreatedAt(Timestamp createdAt) {
-        this.created_at = createdAt;
+    public void setCreated_at(Timestamp created_at) {
+        this.created_at = created_at;
     }
 
     @Override
     public String toString() {
         return new ToStringCreator(this)
-                .append("user_id", this.getUserId())
+                .append("user_id", this.getUser_id())
                 .append("username", this.getUsername())
-                .append("created_at", this.getCreatedAt())
+                .append("created_at", this.getCreated_at())
                 .toString();
     }
 }

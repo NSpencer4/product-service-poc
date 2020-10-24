@@ -1,7 +1,9 @@
 package com.productpickerservicepoc.validation;
 
+import com.productpickerservicepoc.constants.Constants;
 import com.productpickerservicepoc.dto.UserRequest;
 import com.productpickerservicepoc.dto.UserResponse;
+import com.productpickerservicepoc.exception.NotFoundException;
 import com.productpickerservicepoc.repository.UserRepository;
 import com.productpickerservicepoc.service.UserService;
 import com.productpickerservicepoc.service.UserServiceImpl;
@@ -45,14 +47,17 @@ public class UserServiceValidator implements UserService {
     }
 
     @Override
-    // TODO: Validate that the user exists
     public ResponseEntity<Void> update(UserRequest userRequest) {
         ValidationUtil.ensureRequestDataIsNotNull(userRequest);
-        return userServiceImpl.update(userRequest);
+        ValidationUtil.ensureRequestDataIsNotNull(userRequest.getId());
+        if (userRepository.existsById(userRequest.getId())) {
+            return userServiceImpl.update(userRequest);
+        } else {
+            throw new NotFoundException(Constants.USER_NOT_FOUND_ERROR_MESSAGE);
+        }
     }
 
     @Override
-    // TODO: Validate that the user exists
     public ResponseEntity<Void> delete(Integer id) {
         ValidationUtil.ensureRequestDataIsNotNull(id);
         return userServiceImpl.delete(id);

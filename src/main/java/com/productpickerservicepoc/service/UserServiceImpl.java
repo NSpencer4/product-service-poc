@@ -18,6 +18,7 @@ import java.util.List;
 
 import static java.util.stream.Collectors.toList;
 import static org.springframework.http.HttpStatus.CREATED;
+import static org.springframework.http.HttpStatus.OK;
 
 @Service("userServiceImpl")
 public class UserServiceImpl implements UserService {
@@ -56,10 +57,11 @@ public class UserServiceImpl implements UserService {
                 .collect(toList());
     }
 
-    // TODO: Validate that the user exists
     @Transactional()
     public ResponseEntity<Void> update(UserRequest userRequest) {
-        return new ResponseEntity<>(CREATED);
+        User user = userMapper.map(userRequest);
+        userRepository.save(user);
+        return new ResponseEntity<>(OK);
     }
 
     // TODO: Validate that the user exists

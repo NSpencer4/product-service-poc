@@ -7,16 +7,35 @@ public class UserRequest {
     private String username;
     private String createdAt;
 
-    public Integer getId() {
-        return this.id;
-    }
-    public String getUsername() {
-        return this.username;
-    }
-    public String getCreatedAt() {
-        return this.createdAt;
+    public UserRequest(Integer id, String username, String createdAt) {
+        this.id = id;
+        this.username = username;
+        this.createdAt = createdAt;
     }
 
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(String createdAt) {
+        this.createdAt = createdAt;
+    }
 
     @Override
     public String toString() {
