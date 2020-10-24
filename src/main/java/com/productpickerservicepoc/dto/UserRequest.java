@@ -2,10 +2,10 @@ package com.productpickerservicepoc.dto;
 
 import org.springframework.core.style.ToStringCreator;
 
-public class UserDto {
-    public Integer id;
-    public String username;
-    public String createdAt;
+public class UserRequest {
+    private Integer id;
+    private String username;
+    private String createdAt;
 
     public Integer getId() {
         return this.id;

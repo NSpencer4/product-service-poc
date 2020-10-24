@@ -1,19 +1,19 @@
 package com.productpickerservicepoc.mapper;
 
-import com.productpickerservicepoc.dto.ProductDto;
+import com.productpickerservicepoc.dto.ProductRequest;
 import com.productpickerservicepoc.models.Product;
 
 public class ProductMapper {
-    public Product map(ProductDto productDto) {
+    public Product map(ProductRequest productRequestDto) {
         return new Product(
-                productDto.id,
-                productDto.name,
-                productDto.manufacturerName,
-                productDto.category,
-                productDto.itemNumber,
-                productDto.description,
-                productDto.imageUrl,
-                productDto.createdAt
+                productRequestDto.getId(),
+                productRequestDto.getName(),
+                productRequestDto.getManufacturerName(),
+                productRequestDto.getCategory(),
+                productRequestDto.getItemNumber(),
+                productRequestDto.getDescription(),
+                productRequestDto.getImageUrl(),
+                productRequestDto.getCreatedAt()
                 );
     }
 }

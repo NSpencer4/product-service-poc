@@ -1,12 +1,15 @@
 package com.productpickerservicepoc.service;
 
-import com.productpickerservicepoc.dto.UserDto;
+import com.productpickerservicepoc.dto.UserRequest;
+import com.productpickerservicepoc.dto.UserResponse;
 import org.springframework.http.ResponseEntity;
 
+import java.util.List;
+
 public interface UserService {
-    ResponseEntity<Void> create(UserDto userDto);
-    ResponseEntity<Void> getById(Integer id);
-    ResponseEntity<Void> getAll();
-    ResponseEntity<Void> update(UserDto userDto);
+    ResponseEntity<Void> create(UserRequest userRequest);
+    UserResponse getById(Integer id);
+    List<UserResponse> getAll();
+    ResponseEntity<Void> update(UserRequest userRequest);
     ResponseEntity<Void> delete(Integer id);
 }

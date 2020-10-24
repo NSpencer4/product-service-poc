@@ -1,15 +1,18 @@
 package com.productpickerservicepoc.validation;
 
-import com.productpickerservicepoc.dto.UserDto;
-import com.productpickerservicepoc.mapper.UserMapper;
+import com.productpickerservicepoc.dto.UserRequest;
+import com.productpickerservicepoc.dto.UserResponse;
 import com.productpickerservicepoc.repository.UserRepository;
 import com.productpickerservicepoc.service.UserService;
 import com.productpickerservicepoc.service.UserServiceImpl;
+import com.productpickerservicepoc.util.ValidationUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Primary;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
+
+import java.util.List;
 
 @Component
 @Primary
@@ -25,29 +28,33 @@ public class UserServiceValidator implements UserService {
     }
 
     @Override
-    public ResponseEntity<Void> create(UserDto userDto) {
-        return userServiceImpl.create(userDto);
+    public ResponseEntity<Void> create(UserRequest userRequest) {
+        ValidationUtil.ensureRequestDataIsNotNull(userRequest);
+        return userServiceImpl.create(userRequest);
     }
 
     @Override
-    public ResponseEntity<Void> getById(Integer id) {
+    public UserResponse getById(Integer id) {
+        ValidationUtil.ensureRequestDataIsNotNull(id);
         return userServiceImpl.getById(id);
     }
 
     @Override
-    public ResponseEntity<Void> getAll() {
+    public List<UserResponse> getAll() {
         return userServiceImpl.getAll();
     }
 
     @Override
     // TODO: Validate that the user exists
-    public ResponseEntity<Void> update(UserDto userDto) {
-        return userServiceImpl.update(userDto);
+    public ResponseEntity<Void> update(UserRequest userRequest) {
+        ValidationUtil.ensureRequestDataIsNotNull(userRequest);
+        return userServiceImpl.update(userRequest);
     }
 
     @Override
     // TODO: Validate that the user exists
     public ResponseEntity<Void> delete(Integer id) {
+        ValidationUtil.ensureRequestDataIsNotNull(id);
         return userServiceImpl.delete(id);
     }
 }

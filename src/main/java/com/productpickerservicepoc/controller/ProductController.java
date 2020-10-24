@@ -1,6 +1,6 @@
 package com.productpickerservicepoc.controller;
 
-import com.productpickerservicepoc.dto.ProductDto;
+import com.productpickerservicepoc.dto.ProductRequest;
 import com.productpickerservicepoc.service.ProductServiceImpl;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -14,8 +14,8 @@ public class ProductController {
     private ProductServiceImpl productServiceImpl;
 
     @PostMapping("/create")
-    public ResponseEntity<Void> create(@RequestBody ProductDto productDto) {
-        productServiceImpl.create(productDto);
+    public ResponseEntity<Void> create(@RequestBody ProductRequest productRequestDto) {
+        productServiceImpl.create(productRequestDto);
         return new ResponseEntity<>(CREATED);
     }
 }
