@@ -32,10 +32,9 @@ public class UserServiceImpl implements UserService {
         this.userMapper = new UserMapper();
     }
 
-    // TODO: If user exists return bad request
     @Transactional()
     public ResponseEntity<Void> create(UserRequest userRequest) {
-        User user = userMapper.map(userRequest);
+        User user = userMapper.mapUserRequestToUser(userRequest);
         LOGGER.info(user.toString());
         userRepository.save(user);
         return new ResponseEntity<>(CREATED);
@@ -44,7 +43,7 @@ public class UserServiceImpl implements UserService {
     @Transactional(readOnly = true)
     public UserResponse getById(Integer id) {
         LOGGER.info(id.toString());
-        return userMapper.mapToUserResponse(userRepository
+        return userMapper.mapUserToUserResponse(userRepository
                 .findById(id)
                 .orElseThrow(() -> new NotFoundException(Constants.USER_NOT_FOUND_ERROR_MESSAGE)));
     }
@@ -53,20 +52,20 @@ public class UserServiceImpl implements UserService {
     public List<UserResponse> getAll() {
         return userRepository.findAll()
                 .stream()
-                .map(userMapper::mapToUserResponse)
+                .map(userMapper::mapUserToUserResponse)
                 .collect(toList());
     }
 
     @Transactional()
     public ResponseEntity<Void> update(UserRequest userRequest) {
-        User user = userMapper.map(userRequest);
+        User user = userMapper.mapUserRequestToUser(userRequest);
         userRepository.save(user);
         return new ResponseEntity<>(OK);
     }
 
-    // TODO: Validate that the user exists
     @Transactional()
     public ResponseEntity<Void> delete(Integer id) {
-        return new ResponseEntity<>(CREATED);
+        userRepository.deleteById(id);
+        return new ResponseEntity<>(OK);
     }
 }

@@ -4,6 +4,7 @@ import com.productpickerservicepoc.constants.Constants;
 import com.productpickerservicepoc.dto.UserRequest;
 import com.productpickerservicepoc.dto.UserResponse;
 import com.productpickerservicepoc.exception.NotFoundException;
+import com.productpickerservicepoc.exception.UserExistsException;
 import com.productpickerservicepoc.repository.UserRepository;
 import com.productpickerservicepoc.service.UserService;
 import com.productpickerservicepoc.service.UserServiceImpl;
@@ -32,7 +33,11 @@ public class UserServiceValidator implements UserService {
     @Override
     public ResponseEntity<Void> create(UserRequest userRequest) {
         ValidationUtil.ensureRequestDataIsNotNull(userRequest);
-        return userServiceImpl.create(userRequest);
+        if (!userRepository.existsById(userRequest.getId())) {
+            return userServiceImpl.create(userRequest);
+        } else {
+            throw new UserExistsException(Constants.USER_EXISTS_ERROR_MESSAGE);
+        }
     }
 
     @Override
@@ -60,6 +65,10 @@ public class UserServiceValidator implements UserService {
     @Override
     public ResponseEntity<Void> delete(Integer id) {
         ValidationUtil.ensureRequestDataIsNotNull(id);
-        return userServiceImpl.delete(id);
+        if (userRepository.existsById(id)) {
+            return userServiceImpl.delete(id);
+        } else {
+            throw new NotFoundException(Constants.USER_NOT_FOUND_ERROR_MESSAGE);
+        }
     }
 }
