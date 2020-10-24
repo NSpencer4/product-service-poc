@@ -1,22 +1,15 @@
 package com.productpickerservicepoc.exception;
 
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.ResponseStatus;
 
+@ResponseStatus(HttpStatus.NOT_FOUND)
 public class NotFoundException extends RuntimeException {
-    private String errorCode;
     private String errorMessage;
 
-    public NotFoundException(final String code, final String message) {
+    public NotFoundException(String message) {
         super(message);
-        this.errorCode = code;
         this.errorMessage = message;
-    }
-
-    public String getErrorCode() {
-        return this.errorCode;
-    }
-
-    public String getErrorMessage() {
-        return this.errorMessage;
     }
 }
 

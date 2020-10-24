@@ -45,7 +45,7 @@ public class UserServiceImpl implements UserService {
         LOGGER.info(id.toString());
         return userMapper.mapToUserResponse(userRepository
                 .findById(id)
-                .orElseThrow(() -> new NotFoundException(Constants.USER_NOT_FOUND_ERROR_CODE, Constants.USER_NOT_FOUND_ERROR_MESSAGE)));
+                .orElseThrow(() -> new NotFoundException(Constants.USER_NOT_FOUND_ERROR_MESSAGE)));
     }
 
     @Transactional(readOnly = true)

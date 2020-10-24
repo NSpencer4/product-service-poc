@@ -29,13 +29,13 @@ public class UserController {
         return userService.create(userRequest);
     }
 
-    @GetMapping(value = "/getById/{id}")
+    @GetMapping(value = "/get-by-id/{id}")
     public ResponseEntity<UserResponse> getById(@PathVariable Integer id) {
         LOGGER.info(id.toString());
         return status(OK).body(userService.getById(id));
     }
 
-    @GetMapping("/getAll")
+    @GetMapping("/get-all")
     public ResponseEntity<List<UserResponse>> getAll() {
         return status(OK).body(userService.getAll());
     }
