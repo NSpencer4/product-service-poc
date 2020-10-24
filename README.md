@@ -1,2 +1,2 @@
 # Product Picker Service API
-Spring Boot + GraphQL + PostgreSQL Learning POC
+Spring Boot + JUnit5 + GraphQL & REST CRUD Endpoints + PostgreSQL Learning POC
