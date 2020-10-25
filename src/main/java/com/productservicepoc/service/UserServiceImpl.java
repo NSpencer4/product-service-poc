@@ -42,7 +42,7 @@ public class UserServiceImpl implements UserService {
     @Transactional(readOnly = true)
     public UserDto getById(Integer id) {
         LOGGER.info(id.toString());
-        return userMapper.mapUserToUserResponse(userRepository
+        return userMapper.mapUserToUserDto(userRepository
                 .findById(id)
                 .orElseThrow(() -> new NotFoundException(Constants.USER_NOT_FOUND_ERROR_MESSAGE)));
     }
@@ -51,7 +51,7 @@ public class UserServiceImpl implements UserService {
     public List<UserDto> getAll() {
         return userRepository.findAll()
                 .stream()
-                .map(userMapper::mapUserToUserResponse)
+                .map(userMapper::mapUserToUserDto)
                 .collect(toList());
     }
 
