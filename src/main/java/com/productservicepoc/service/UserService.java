@@ -1,15 +1,14 @@
 package com.productservicepoc.service;
 
-import com.productservicepoc.dto.UserRequest;
-import com.productservicepoc.dto.UserResponse;
+import com.productservicepoc.dto.UserDto;
 import org.springframework.http.ResponseEntity;
 
 import java.util.List;
 
 public interface UserService {
-    ResponseEntity<Void> create(UserRequest userRequest);
-    UserResponse getById(Integer id);
-    List<UserResponse> getAll();
-    ResponseEntity<Void> update(UserRequest userRequest);
+    ResponseEntity<Void> create(UserDto UserDto);
+    UserDto getById(Integer id);
+    List<UserDto> getAll();
+    ResponseEntity<Void> update(UserDto UserDto);
     ResponseEntity<Void> delete(Integer id);
 }

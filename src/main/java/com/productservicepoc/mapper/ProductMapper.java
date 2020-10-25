@@ -1,19 +1,19 @@
 package com.productservicepoc.mapper;
 
-import com.productservicepoc.dto.ProductRequest;
+import com.productservicepoc.dto.ProductDto;
 import com.productservicepoc.models.Product;
 
 public class ProductMapper {
-    public Product map(ProductRequest productRequestDto) {
+    public Product map(ProductDto productDtoDto) {
         return new Product(
-                productRequestDto.getId(),
-                productRequestDto.getName(),
-                productRequestDto.getManufacturerName(),
-                productRequestDto.getCategory(),
-                productRequestDto.getItemNumber(),
-                productRequestDto.getDescription(),
-                productRequestDto.getImageUrl(),
-                productRequestDto.getCreatedAt()
+                productDtoDto.getId(),
+                productDtoDto.getName(),
+                productDtoDto.getManufacturerName(),
+                productDtoDto.getCategory(),
+                productDtoDto.getItemNumber(),
+                productDtoDto.getDescription(),
+                productDtoDto.getImageUrl(),
+                productDtoDto.getCreatedAt()
                 );
     }
 }

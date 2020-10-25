@@ -2,7 +2,7 @@ package com.productservicepoc.dto;
 
 import java.sql.Timestamp;
 
-public class UserResponse {
+public class UserDto {
     private Integer id;
     private String username;
     private Timestamp createdAt;
@@ -27,7 +27,7 @@ public class UserResponse {
         this.createdAt = timestamp;
     }
 
-    public UserResponse(Integer id, String username, Timestamp createdAt) {
+    public UserDto(Integer id, String username, Timestamp createdAt) {
         this.id = id;
         this.username = username;
         this.createdAt = createdAt;

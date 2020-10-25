@@ -1,6 +1,6 @@
 package com.productservicepoc.controller;
 
-import com.productservicepoc.dto.ProductRequest;
+import com.productservicepoc.dto.ProductDto;
 import com.productservicepoc.service.ProductServiceImpl;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -14,8 +14,8 @@ public class ProductController {
     private ProductServiceImpl productServiceImpl;
 
     @PostMapping("/create")
-    public ResponseEntity<Void> create(@RequestBody ProductRequest productRequestDto) {
-        productServiceImpl.create(productRequestDto);
+    public ResponseEntity<Void> create(@RequestBody ProductDto productDtoDto) {
+        productServiceImpl.create(productDtoDto);
         return new ResponseEntity<>(CREATED);
     }
 

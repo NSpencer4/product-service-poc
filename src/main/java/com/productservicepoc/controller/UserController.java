@@ -1,7 +1,6 @@
 package com.productservicepoc.controller;
 
-import com.productservicepoc.dto.UserRequest;
-import com.productservicepoc.dto.UserResponse;
+import com.productservicepoc.dto.UserDto;
 import com.productservicepoc.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -20,23 +19,23 @@ public class UserController {
     private UserService userService;
 
     @PostMapping("/create")
-    public ResponseEntity<Void> create(@RequestBody UserRequest userRequest) {
-        return userService.create(userRequest);
+    public ResponseEntity<Void> create(@RequestBody UserDto UserDto) {
+        return userService.create(UserDto);
     }
 
     @GetMapping(value = "/get-by-id/{id}")
-    public ResponseEntity<UserResponse> getById(@PathVariable Integer id) {
+    public ResponseEntity<UserDto> getById(@PathVariable Integer id) {
         return status(OK).body(userService.getById(id));
     }
 
     @GetMapping("/get-all")
-    public ResponseEntity<List<UserResponse>> getAll() {
+    public ResponseEntity<List<UserDto>> getAll() {
         return status(OK).body(userService.getAll());
     }
 
     @PutMapping("/update")
-    public ResponseEntity<Void> update(@RequestBody UserRequest userRequest) {
-        return userService.update(userRequest);
+    public ResponseEntity<Void> update(@RequestBody UserDto UserDto) {
+        return userService.update(UserDto);
     }
 
     @DeleteMapping(value = "/delete/{id}")

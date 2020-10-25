@@ -1,8 +1,7 @@
 package com.productservicepoc.service;
 
 import com.productservicepoc.constants.Constants;
-import com.productservicepoc.dto.UserRequest;
-import com.productservicepoc.dto.UserResponse;
+import com.productservicepoc.dto.UserDto;
 import com.productservicepoc.exception.NotFoundException;
 import com.productservicepoc.mapper.UserMapper;
 import com.productservicepoc.models.User;
@@ -33,15 +32,15 @@ public class UserServiceImpl implements UserService {
     }
 
     @Transactional()
-    public ResponseEntity<Void> create(UserRequest userRequest) {
-        User user = userMapper.mapUserRequestToUser(userRequest);
+    public ResponseEntity<Void> create(UserDto UserDto) {
+        User user = userMapper.mapUserDtoToUser(UserDto);
         LOGGER.info(user.toString());
         userRepository.save(user);
         return new ResponseEntity<>(CREATED);
     }
 
     @Transactional(readOnly = true)
-    public UserResponse getById(Integer id) {
+    public UserDto getById(Integer id) {
         LOGGER.info(id.toString());
         return userMapper.mapUserToUserResponse(userRepository
                 .findById(id)
@@ -49,7 +48,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Transactional(readOnly = true)
-    public List<UserResponse> getAll() {
+    public List<UserDto> getAll() {
         return userRepository.findAll()
                 .stream()
                 .map(userMapper::mapUserToUserResponse)
@@ -57,8 +56,8 @@ public class UserServiceImpl implements UserService {
     }
 
     @Transactional()
-    public ResponseEntity<Void> update(UserRequest userRequest) {
-        User user = userMapper.mapUserRequestToUser(userRequest);
+    public ResponseEntity<Void> update(UserDto UserDto) {
+        User user = userMapper.mapUserDtoToUser(UserDto);
         userRepository.save(user);
         return new ResponseEntity<>(OK);
     }

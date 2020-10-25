@@ -1,6 +1,6 @@
 package com.productservicepoc.service;
 
-import com.productservicepoc.dto.ProductRequest;
+import com.productservicepoc.dto.ProductDto;
 import com.productservicepoc.mapper.ProductMapper;
 import com.productservicepoc.models.Product;
 import com.productservicepoc.repository.ProductRepository;
@@ -11,8 +11,8 @@ public class ProductServiceImpl {
     private ProductRepository productRepository;
     private ProductMapper productMapper;
 
-    public void create(ProductRequest productRequestDto) {
-        Product product = productMapper.map(productRequestDto);
+    public void create(ProductDto productDtoDto) {
+        Product product = productMapper.map(productDtoDto);
         productRepository.save(product);
     }
 }

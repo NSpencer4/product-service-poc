@@ -1,6 +1,6 @@
 package com.productservicepoc.dto;
 
-public class ProductRequest {
+public class ProductDto {
     private Integer id;
     private String name;
     private String manufacturerName;
@@ -10,7 +10,7 @@ public class ProductRequest {
     private String imageUrl;
     private String createdAt;
 
-    public ProductRequest(Integer id, String name, String manufacturerName, String category, String itemNumber, String description, String imageUrl, String createdAt) {
+    public ProductDto(Integer id, String name, String manufacturerName, String category, String itemNumber, String description, String imageUrl, String createdAt) {
         this.id = id;
         this.name = name;
         this.manufacturerName = manufacturerName;

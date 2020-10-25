@@ -1,7 +1,6 @@
 package com.productservicepoc.controller;
 
-import com.productservicepoc.dto.UserRequest;
-import com.productservicepoc.dto.UserResponse;
+import com.productservicepoc.dto.UserDto;
 import com.productservicepoc.service.UserService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -26,8 +25,8 @@ import static org.mockito.Mockito.atLeastOnce;
 
 @ExtendWith(MockitoExtension.class)
 class UserControllerTest {
-    private UserRequest mockUserRequest;
-    private UserResponse mockUserResponse;
+    private UserDto mockUserDto;
+    private UserDto mockUserDto;
 
     @Mock
     private UserService userService;
@@ -37,8 +36,8 @@ class UserControllerTest {
 
     @BeforeEach
     void setUp() {
-        this.mockUserRequest = new UserRequest(1, "Chase", new Timestamp(System.currentTimeMillis()));
-        this.mockUserResponse = new UserResponse(1, "Chase", new Timestamp(System.currentTimeMillis()));
+        this.mockUserDto = new UserDto(1, "Chase", new Timestamp(System.currentTimeMillis()));
+        this.mockUserDto = new UserDto(1, "Chase", new Timestamp(System.currentTimeMillis()));
     }
 
     @Nested
@@ -48,9 +47,9 @@ class UserControllerTest {
         @DisplayName("Should call the user service create method with the user request and returns the response")
         void callsTheServiceCreateMethod() {
             ResponseEntity<Void> mockResponse = new ResponseEntity<>(HttpStatus.OK);
-            Mockito.when(userService.create(mockUserRequest)).thenReturn(mockResponse);
-            ResponseEntity<Void> result = userController.create(mockUserRequest);
-            Mockito.verify(userService, atLeastOnce()).create(mockUserRequest);
+            Mockito.when(userService.create(mockUserDto)).thenReturn(mockResponse);
+            ResponseEntity<Void> result = userController.create(mockUserDto);
+            Mockito.verify(userService, atLeastOnce()).create(mockUserDto);
             assert(result).equals(mockResponse);
         }
     }
@@ -62,11 +61,11 @@ class UserControllerTest {
         @ValueSource(ints = { 1, 2, 3, 4, 5 })
         @DisplayName("Should call the user service getById method with the user id and returns the response")
         void callsTheServiceCreateMethod(Integer id) {
-            Mockito.when(userService.getById(id)).thenReturn(mockUserResponse);
-            ResponseEntity<UserResponse> result = userController.getById(id);
+            Mockito.when(userService.getById(id)).thenReturn(mockUserDto);
+            ResponseEntity<UserDto> result = userController.getById(id);
             Mockito.verify(userService, atLeastOnce()).getById(id);
             assert(result.getStatusCode()).equals(HttpStatus.OK);
-            assert Objects.equals(result.getBody(), mockUserResponse);
+            assert Objects.equals(result.getBody(), mockUserDto);
         }
     }
 
@@ -76,10 +75,10 @@ class UserControllerTest {
         @Test
         @DisplayName("Should call the user service getAll method and returns the user list response")
         void callsTheServiceCreateMethod() {
-            List<UserResponse> respList = new ArrayList<UserResponse>();
-            respList.add(mockUserResponse);
+            List<UserDto> respList = new ArrayList<UserDto>();
+            respList.add(mockUserDto);
             Mockito.when(userService.getAll()).thenReturn(respList);
-            ResponseEntity<List<UserResponse>> result = userController.getAll();
+            ResponseEntity<List<UserDto>> result = userController.getAll();
             Mockito.verify(userService, atLeastOnce()).getAll();
             assert(result.getStatusCode()).equals(HttpStatus.OK);
             assert Objects.equals(result.getBody(), respList);
@@ -93,9 +92,9 @@ class UserControllerTest {
         @DisplayName("Should call the user service update method with the user request and returns the response")
         void callsTheServiceCreateMethod() {
             ResponseEntity<Void> mockResponse = new ResponseEntity<>(HttpStatus.OK);
-            Mockito.when(userService.update(mockUserRequest)).thenReturn(mockResponse);
-            ResponseEntity<Void> result = userController.update(mockUserRequest);
-            Mockito.verify(userService, atLeastOnce()).update(mockUserRequest);
+            Mockito.when(userService.update(mockUserDto)).thenReturn(mockResponse);
+            ResponseEntity<Void> result = userController.update(mockUserDto);
+            Mockito.verify(userService, atLeastOnce()).update(mockUserDto);
             assert(result).equals(mockResponse);
         }
     }

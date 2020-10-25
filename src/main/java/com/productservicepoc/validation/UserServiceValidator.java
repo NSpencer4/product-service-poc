@@ -1,8 +1,7 @@
 package com.productservicepoc.validation;
 
 import com.productservicepoc.constants.Constants;
-import com.productservicepoc.dto.UserRequest;
-import com.productservicepoc.dto.UserResponse;
+import com.productservicepoc.dto.UserDto;
 import com.productservicepoc.exception.NotFoundException;
 import com.productservicepoc.exception.UserExistsException;
 import com.productservicepoc.repository.UserRepository;
@@ -31,32 +30,32 @@ public class UserServiceValidator implements UserService {
     }
 
     @Override
-    public ResponseEntity<Void> create(UserRequest userRequest) {
-        ValidationUtil.ensureRequestDataIsNotNull(userRequest);
-        if (!userRepository.existsById(userRequest.getId())) {
-            return userServiceImpl.create(userRequest);
+    public ResponseEntity<Void> create(UserDto UserDto) {
+        ValidationUtil.ensureRequestDataIsNotNull(UserDto);
+        if (!userRepository.existsById(UserDto.getId())) {
+            return userServiceImpl.create(UserDto);
         } else {
             throw new UserExistsException(Constants.USER_EXISTS_ERROR_MESSAGE);
         }
     }
 
     @Override
-    public UserResponse getById(Integer id) {
+    public UserDto getById(Integer id) {
         ValidationUtil.ensureRequestDataIsNotNull(id);
         return userServiceImpl.getById(id);
     }
 
     @Override
-    public List<UserResponse> getAll() {
+    public List<UserDto> getAll() {
         return userServiceImpl.getAll();
     }
 
     @Override
-    public ResponseEntity<Void> update(UserRequest userRequest) {
-        ValidationUtil.ensureRequestDataIsNotNull(userRequest);
-        ValidationUtil.ensureRequestDataIsNotNull(userRequest.getId());
-        if (userRepository.existsById(userRequest.getId())) {
-            return userServiceImpl.update(userRequest);
+    public ResponseEntity<Void> update(UserDto UserDto) {
+        ValidationUtil.ensureRequestDataIsNotNull(UserDto);
+        ValidationUtil.ensureRequestDataIsNotNull(UserDto.getId());
+        if (userRepository.existsById(UserDto.getId())) {
+            return userServiceImpl.update(UserDto);
         } else {
             throw new NotFoundException(Constants.USER_NOT_FOUND_ERROR_MESSAGE);
         }
