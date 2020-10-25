@@ -1,129 +1,127 @@
 package com.productpickerservicepoc.models;
 
-import org.springframework.core.style.ToStringCreator;
-
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Entity
 @Table(name = "products")
 public class Product {
     @Id
-    public Integer product_id;
+    private Integer product_id;
 
     @Column
-    public String name;
+    private String name;
 
     @Column
-    public String manufacturer_name;
+    private String manufacturer_name;
 
     @Column
-    public String category;
+    private String category;
 
     @Column
-    public String item_number;
+    private String item_number;
 
     @Column
-    public String description;
+    private String description;
 
     @Column
-    public String image_url;
+    private String image_url;
 
     @Column
-    public String created_at;
+    private String created_at;
 
-    public Product(final Integer productId, final String name,
-                   final String manufacturerName, final String category,
-                   final String itemNumber, final String description,
-                   final String imageUrl, final String createdAt) {
-        this.product_id = productId;
+    public Product(Integer product_id, String name, String manufacturer_name, String category, String item_number, String description, String image_url, String created_at) {
+        this.product_id = product_id;
         this.name = name;
-        this.manufacturer_name = manufacturerName;
+        this.manufacturer_name = manufacturer_name;
         this.category = category;
-        this.item_number = itemNumber;
+        this.item_number = item_number;
         this.description = description;
-        this.image_url = imageUrl;
-        this.created_at = createdAt;
+        this.image_url = image_url;
+        this.created_at = created_at;
     }
 
     public Product() {
         //
     }
 
-    public Integer getId() {
-        return this.product_id;
+    public Integer getProduct_id() {
+        return product_id;
     }
 
-    public void setId(Integer productId) {
-        this.product_id = productId;
+    public void setProduct_id(Integer product_id) {
+        this.product_id = product_id;
     }
 
     public String getName() {
-        return this.name;
+        return name;
     }
 
     public void setName(String name) {
         this.name = name;
     }
 
-    public String getManufacturerName() {
-        return this.manufacturer_name;
+    public String getManufacturer_name() {
+        return manufacturer_name;
     }
 
-    public void setManufacturerName(String manufacturerName) {
-        this.manufacturer_name = manufacturerName;
+    public void setManufacturer_name(String manufacturer_name) {
+        this.manufacturer_name = manufacturer_name;
     }
 
     public String getCategory() {
-        return this.category;
+        return category;
     }
 
     public void setCategory(String category) {
         this.category = category;
     }
 
-    public String getItemNumber() {
-        return this.item_number;
+    public String getItem_number() {
+        return item_number;
     }
 
-    public void setItemNumber(String itemNumber) {
-        this.item_number = itemNumber;
+    public void setItem_number(String item_number) {
+        this.item_number = item_number;
     }
 
     public String getDescription() {
-        return this.description;
+        return description;
     }
 
     public void setDescription(String description) {
         this.description = description;
     }
 
-    public String getImageUrl() {
-        return this.image_url;
+    public String getImage_url() {
+        return image_url;
     }
 
-    public void setImageUrl(String imageUrl) {
-        this.image_url = imageUrl;
+    public void setImage_url(String image_url) {
+        this.image_url = image_url;
     }
 
-    public String getCreateAt() {
-        return this.created_at;
+    public String getCreated_at() {
+        return created_at;
     }
 
-    public void setCreatedAt(String createdAt) {
-        this.created_at = createdAt;
+    public void setCreated_at(String created_at) {
+        this.created_at = created_at;
     }
 
     @Override
     public String toString() {
-        return new ToStringCreator(this)
-                .append("id", this.getId())
-                .append("name", this.getName())
-                .append("manufacturer_name", this.getManufacturerName())
-                .append("category", this.getCategory())
-                .append("item_number", this.getItemNumber())
-                .append("description", this.getDescription())
-                .append("image_url", this.getImageUrl())
-                .append("created_at", this.getCreateAt())
-                .toString();
+        return "Product{" +
+                "product_id=" + product_id +
+                ", name='" + name + '\'' +
+                ", manufacturer_name='" + manufacturer_name + '\'' +
+                ", category='" + category + '\'' +
+                ", item_number='" + item_number + '\'' +
+                ", description='" + description + '\'' +
+                ", image_url='" + image_url + '\'' +
+                ", created_at='" + created_at + '\'' +
+                '}';
     }
 }
