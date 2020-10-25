@@ -34,14 +34,14 @@ public class UserServiceImpl implements UserService {
     @Transactional()
     public ResponseEntity<Void> create(UserDto UserDto) {
         User user = userMapper.mapUserDtoToUser(UserDto);
-        LOGGER.info(user.toString());
+        LOGGER.debug(user.toString());
         userRepository.save(user);
         return new ResponseEntity<>(CREATED);
     }
 
     @Transactional(readOnly = true)
     public UserDto getById(Integer id) {
-        LOGGER.info(id.toString());
+        LOGGER.debug(id.toString());
         return userMapper.mapUserToUserDto(userRepository
                 .findById(id)
                 .orElseThrow(() -> new NotFoundException(Constants.USER_NOT_FOUND_ERROR_MESSAGE)));
