@@ -26,7 +26,6 @@ import static org.mockito.Mockito.atLeastOnce;
 @ExtendWith(MockitoExtension.class)
 class UserControllerTest {
     private UserDto mockUserDto;
-    private UserDto mockUserDto;
 
     @Mock
     private UserService userService;
