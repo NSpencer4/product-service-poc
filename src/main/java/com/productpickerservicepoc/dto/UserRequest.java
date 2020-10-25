@@ -1,13 +1,13 @@
 package com.productpickerservicepoc.dto;
 
-import org.springframework.core.style.ToStringCreator;
+import java.sql.Timestamp;
 
 public class UserRequest {
     private Integer id;
     private String username;
-    private String createdAt;
+    private Timestamp createdAt;
 
-    public UserRequest(Integer id, String username, String createdAt) {
+    public UserRequest(Integer id, String username, Timestamp createdAt) {
         this.id = id;
         this.username = username;
         this.createdAt = createdAt;
@@ -29,20 +29,20 @@ public class UserRequest {
         this.username = username;
     }
 
-    public String getCreatedAt() {
+    public Timestamp getCreatedAt() {
         return createdAt;
     }
 
-    public void setCreatedAt(String createdAt) {
+    public void setCreatedAt(Timestamp createdAt) {
         this.createdAt = createdAt;
     }
 
     @Override
     public String toString() {
-        return new ToStringCreator(this)
-                .append("getId", this.getId())
-                .append("username", this.getUsername())
-                .append("created_at", this.getCreatedAt())
-                .toString();
+        return "UserRequest{" +
+                "id=" + id +
+                ", username='" + username + '\'' +
+                ", createdAt=" + createdAt +
+                '}';
     }
 }
