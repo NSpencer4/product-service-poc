@@ -1,7 +1,5 @@
 package com.productservicepoc.models;
 
-import org.springframework.core.style.ToStringCreator;
-
 import javax.persistence.*;
 import java.sql.Timestamp;
 
@@ -55,10 +53,10 @@ public class User {
 
     @Override
     public String toString() {
-        return new ToStringCreator(this)
-                .append("user_id", this.getUser_id())
-                .append("username", this.getUsername())
-                .append("created_at", this.getCreated_at())
-                .toString();
+        return "User{" +
+                "user_id=" + user_id +
+                ", username='" + username + '\'' +
+                ", created_at=" + created_at +
+                '}';
     }
 }

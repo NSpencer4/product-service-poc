@@ -45,7 +45,7 @@ class UserDtoTest {
     @Test
     void testToString() {
         userDto = new UserDto(1, "chase", testTimestamp);
-        String expectedToString = "UserResponse{" +
+        String expectedToString = "UserDto{" +
                 "id=" + 1 +
                 ", username='" + "chase" + '\'' +
                 ", createdAt=" + testTimestamp +

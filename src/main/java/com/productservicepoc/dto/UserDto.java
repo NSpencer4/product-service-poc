@@ -35,7 +35,7 @@ public class UserDto {
 
     @Override
     public String toString() {
-        return "UserResponse{" +
+        return "UserDto{" +
                 "id=" + id +
                 ", username='" + username + '\'' +
                 ", createdAt=" + createdAt +
