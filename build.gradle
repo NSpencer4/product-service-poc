@@ -21,7 +21,7 @@ dependencies {
 	compile group: 'com.graphql-java', name: 'graphql-spring-boot-starter', version: '5.0.2'
 	compile group: 'org.springframework.boot', name: 'spring-boot-starter-actuator'
 	testCompile "org.mockito:mockito-core:2.+"
-	testCompile('org.mockito:mockito-junit-jupiter:2.18.3')
+	testCompile('org.mockito:mockito-junit-jupiter:3.9.0')
 	testImplementation('org.springframework.boot:spring-boot-starter-test') {
 		exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
 	}
