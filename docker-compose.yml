@@ -1,0 +1,29 @@
+version: "3.5"
+
+services:
+  pharma-db:
+    container_name: pharma-db
+    image: postgres:12
+    restart: always
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_DATABASE: pharma
+      POSTGRES_USERNAME: postgres
+      POSTGRES_PASSWORD: postgres
+
+  app:
+    container_name: app
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+    volumes:
+      - /data/app
+    depends_on:
+      - pharma-db
+    environment:
+      POSTGRES_USERNAME: postgres
+      POSTGRES_PASSWORD: postgres
+      SPRING_DATASOURCE_URL: jdbc:postgresql://pharma-db:5432/pharma
