@@ -7,10 +7,10 @@ Spring Boot | JUnit5 | Mockito | GraphQL & REST CRUD Endpoints | PostgreSQL
 - [x] Create CRUD REST endpoints for the User entities
 - [x] Demonstrate JpaRepository functions for entities 
 - [ ] Demonstrate custom SQL execution for entities
-- [ ] Create CRUD REST endpoints for the Product entities
+- [X] Create CRUD REST endpoints for the Product entities
 - [x] 100% unit test coverage for the User files
 - [ ] 100% unit test coverage for the Product files
-- [ ] Demonstrate GraphQL CRUD operations
+- [X] Demonstrate GraphQL CRUD operations
 - [ ] 100% unit test coverage for the GraphQL implementation
 - [x] All strings need to be constants
 - [x] Init test data
