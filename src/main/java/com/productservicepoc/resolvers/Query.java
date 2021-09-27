@@ -2,24 +2,24 @@ package com.productservicepoc.resolvers;
 
 import com.coxautodev.graphql.tools.GraphQLQueryResolver;
 import com.productservicepoc.models.Product;
-import com.productservicepoc.repository.ProductRepository;
+import com.productservicepoc.service.ProductServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
+
 @Component
 public class Query implements GraphQLQueryResolver {
-    private ProductRepository productRepository;
+    private final ProductServiceImpl productService;
 
     @Autowired
-    public Query(ProductRepository productRepository) {
-        this.productRepository = productRepository;
+    public Query(ProductServiceImpl productService) {
+        this.productService = productService;
     }
 
-    public Product getProductById(Integer productId) {
-        return this.productRepository.getOne(productId);
+    public List<Product> products() {
+        return this.productService.getAll();
     }
 
-    public Iterable<Product> findAllProducts() {
-        return productRepository.findAll();
-    }
+    public Product getProductById(Integer productId) { return this.productService.getById(productId);}
 }
